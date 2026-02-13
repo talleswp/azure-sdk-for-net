@@ -31,6 +31,7 @@ internal static class StreamingUpdateReasonExtensions
         StreamingUpdateReason.MessageFailed => "thread.message.incomplete",
         StreamingUpdateReason.Error => "error",
         StreamingUpdateReason.Done => "done",
+        StreamingUpdateReason.KeepAlive => "keepalive",
         _ => string.Empty
     };
 
@@ -61,6 +62,7 @@ internal static class StreamingUpdateReasonExtensions
         "thread.message.incomplete" => StreamingUpdateReason.MessageFailed,
         "error" => StreamingUpdateReason.Error,
         "done" => StreamingUpdateReason.Done,
+        "keepalive" => StreamingUpdateReason.KeepAlive,
         _ => StreamingUpdateReason.Unknown,
     };
 }
