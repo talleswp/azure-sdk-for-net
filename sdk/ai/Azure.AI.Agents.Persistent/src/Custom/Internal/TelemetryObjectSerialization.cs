@@ -141,6 +141,7 @@ internal class ThreadMessageEventAttributes
 [JsonSerializable(typeof(EventRole))]
 [JsonSerializable(typeof(EventContent))]
 [JsonSerializable(typeof(Dictionary<string, string>))]
+[JsonSerializable(typeof(List<string>))]
 [JsonSerializable(typeof(ToolCallAttribute))]
 [JsonSerializable(typeof(ThreadMessageEventAttributes))]
 // Specific tool call events
