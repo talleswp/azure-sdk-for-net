@@ -37,10 +37,13 @@ namespace Azure.AI.Agents.Persistent
             base.JsonModelWriteCore(writer, options);
             writer.WritePropertyName("openapi"u8);
             writer.WriteStartObject();
-            foreach (var item in OpenAPI)
+            if (OpenAPI != null)
             {
-                writer.WritePropertyName(item.Key);
-                writer.WriteStringValue(item.Value);
+                foreach (var item in OpenAPI)
+                {
+                    writer.WritePropertyName(item.Key);
+                    writer.WriteStringValue(item.Value);
+                }
             }
             writer.WriteEndObject();
         }

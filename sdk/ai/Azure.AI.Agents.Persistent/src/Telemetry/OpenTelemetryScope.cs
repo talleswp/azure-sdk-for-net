@@ -1202,11 +1202,7 @@ namespace Azure.AI.Agents.Persistent.Telemetry
 
         private static JsonElement ToJsonElement(string toolCall)
         {
-            using var memStream = new MemoryStream();
-            memStream.Write(Encoding.UTF8.GetBytes(toolCall), 0, toolCall.Length);
-            // Reset stream position to the beginning.
-            memStream.Position = 0;
-            using var tempDoc = JsonDocument.Parse(memStream);
+            using var tempDoc = JsonDocument.Parse(toolCall);
             return tempDoc.RootElement.Clone();
         }
 
