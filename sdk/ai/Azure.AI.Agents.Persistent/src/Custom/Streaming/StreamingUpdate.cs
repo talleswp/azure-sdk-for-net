@@ -46,7 +46,14 @@ public abstract partial class StreamingUpdate
 
     internal static IEnumerable<StreamingUpdate> FromEvent(SseItem<byte[]> sseItem)
     {
-        StreamingUpdateReason updateKind = StreamingUpdateReasonExtensions.FromSseEventLabel(sseItem.EventType);
+        var eventType = sseItem.EventType;
+        var updateKind = StreamingUpdateReasonExtensions.FromSseEventLabel(eventType);
+
+        if (updateKind == StreamingUpdateReason.KeepAlive)
+        {
+            return KeepAliveUpdate.GetRunSteps();
+        }
+
         using JsonDocument dataDocument = JsonDocument.Parse(sseItem.Data);
         JsonElement e = dataDocument.RootElement;
 
